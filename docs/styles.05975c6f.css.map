@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles.css"],"names":[],"mappings":"AAAA,YAGE,qBACF,CAEA,MAEE,WACF","file":"styles.05975c6f.css","sourceRoot":"..\\src","sourcesContent":["table,\r\nth,\r\ntd {\r\n  border: 1px solid black;\r\n}\r\n\r\nth,\r\ntd {\r\n  padding: 8px;\r\n}\r\n"]}
