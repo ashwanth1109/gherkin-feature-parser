@@ -2,10 +2,8 @@
   font-family: 'Quicksand', sans-serif;
 }
 
-table,
-th,
 td {
-  border: 1px solid black;
+  border-right: 1px solid dodgerblue;
 }
 
 th,
@@ -18,4 +16,31 @@ td {
 }
 h2 {
   color: dodgerblue;
+}
+
+.border-1px {
+  border: 1px solid black;
+}
+
+.fullSize {
+  width: 100%;
+  height: 100%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+}
+
+.a-center {
+  align-items: center;
+}
+
+.m-left-24 {
+  margin-left: 24px;
 }
