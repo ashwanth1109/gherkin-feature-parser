@@ -98,21 +98,9 @@ export default () => {
         <tr>
           <td>1</td>
           <td>
-            The user is logged in as Normal User
-            <table>
-              <tr>
-                <th>Environment URL</th>
-                <th>User Name</th>
-                <th>Login</th>
-                <th>Password</th>
-              </tr>
-              <tr>
-                <td>https://customertwo.fogzbugzdev.be/</td>
-                <td>Normal User</td>
-                <td>normal@customertwo.com</td>
-                <td>test1234</td>
-              </tr>
-            </table>
+            <a href="https://docs.google.com/spreadsheets/d/1XYIXlb7WfY5PDis9agQiv-7jeCubulrQgzN5i035Xeg/edit#gid=0">
+              The user is logged in as Normal User
+            </a>
           </td>
           <td>Action is executed</td>
         </tr>
@@ -163,7 +151,7 @@ export default () => {
                 <th>Status</th>
               </tr>
               <tr>
-                <td>17</td>
+                <td>CASE_ID</td>
                 <td>CASE_TITLE</td>
                 <td>CASE_STATUS</td>
               </tr>
@@ -177,8 +165,26 @@ export default () => {
       <ol>
         <li>
           <a href="#scenario-user-can-create-a-new-case">
-            User can create a new case with (16, New Case to handle, Status)
+            User can create a new case with (CASE_ID, CASE_TITLE, CASE_STATUS)
+            where
           </a>
+          <table>
+            <tr>
+              <td>CASE_ID</td>
+              <td>
+                This will be the case id that is automatically assigned when
+                creating the test.
+              </td>
+            </tr>
+            <tr>
+              <td>CASE_TITLE</td>
+              <td>New Case to handle</td>
+            </tr>
+            <tr>
+              <td>CASE_STATUS</td>
+              <td>Active</td>
+            </tr>
+          </table>
         </li>
       </ol>
       <hr />
@@ -192,28 +198,17 @@ export default () => {
         <tr>
           <td>1</td>
           <td>
-            The user is logged in as Administrator
-            <table>
-              <tr>
-                <th>Environment URL</th>
-                <th>User Name</th>
-                <th>Login</th>
-                <th>Password</th>
-              </tr>
-              <tr>
-                <td>https://customertwo.fogzbugzdev.be/</td>
-                <td>Administrator</td>
-                <td>admin@customertwo.com</td>
-                <td>test1234</td>
-              </tr>
-            </table>
+            <a href="https://docs.google.com/spreadsheets/d/1XYIXlb7WfY5PDis9agQiv-7jeCubulrQgzN5i035Xeg/edit?usp=sharing">
+              The user is logged in as Administrator
+            </a>
           </td>
           <td>Action is executed</td>
         </tr>
         <tr>
           <td>2</td>
           <td>
-            The user searches for the "16" search string by using the search box
+            The user searches for the CASE_ID search string by using the search
+            box
           </td>
           <td>Action is executed</td>
         </tr>
