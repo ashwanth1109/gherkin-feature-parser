@@ -132,7 +132,7 @@ export default () => {
         </tr>
         <tr>
           <td>2</td>
-          <td>Visit the environment URL</td>
+          <td>Visit the environment URL given in the link above</td>
           <td>Action is executed</td>
         </tr>
         <tr>
