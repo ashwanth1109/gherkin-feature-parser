@@ -222,8 +222,8 @@ export default () => {
         <tr>
           <td>2</td>
           <td>
-            The user searches for the CASE_ID search string by using the search
-            box
+            The user searches for the created {`{`}CASE_ID{`}`} (from
+            preconditions, e.g. '16') search string by using the search box
           </td>
           <td>Action is executed</td>
         </tr>
