@@ -2,6 +2,10 @@
   font-family: 'Quicksand', sans-serif;
 }
 
+body {
+  padding: 8px;
+}
+
 td {
   border-right: 1px solid dodgerblue;
 }
@@ -13,9 +17,6 @@ td {
 
 .max-w-50 {
   max-width: 50px;
-}
-h2 {
-  color: dodgerblue;
 }
 
 .border-1px {
@@ -43,4 +44,45 @@ h2 {
 
 .m-left-24 {
   margin-left: 24px;
+}
+
+.spacer-16 {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+
+.progress {
+  color: dodgerblue;
+}
+
+.pass {
+  color: limegreen;
+}
+
+.fail {
+  color: red;
+}
+
+.tabs-container {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.tab {
+  text-transform: uppercase;
+  min-width: 100px;
+  height: 100%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0 8px;
+  margin: 0 4px;
+}
+
+.selected {
+  background: dodgerblue;
+  color: white;
 }

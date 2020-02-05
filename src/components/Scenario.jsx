@@ -7,6 +7,7 @@ import PassFail from './PassFail';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import { withStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
+import Button from '@material-ui/core/Button';
 
 const StyledTableCell = withStyles(theme => ({
   head: {
@@ -30,31 +31,27 @@ const StyledTableRow = withStyles(theme => ({
   }
 }))(TableRow);
 
+const progressState = {
+  NOT_STARTED: 'Not Started',
+  IN_PROGRESS: 'In Progress',
+  FAILING: 'Failing',
+  PASSING: 'Passing'
+};
+
 const Scenario = ({ scenario }) => {
   const [show, setShow] = useState(false);
+  const [progress, setProgress] = useState(progressState.NOT_STARTED);
 
   const renderDescTable = step => (
     <table>
-      <thead>
-        <tr>
-          {step.table.th.map((header, id) => (
-            <th key={id} className="border-1px">
-              {header}
-            </th>
-          ))}
+      {step.table.th.map((header, id) => (
+        <tr key={id}>
+          <th className="border-1px">{header}</th>
+          {!!step.table.td.length && step.table.td[0][id] && (
+            <td className="border-1px">{step.table.td[0][id]}</td>
+          )}
         </tr>
-      </thead>
-      <tbody>
-        {step.table.td.map((data, id1) => (
-          <tr key={id1}>
-            {data.map((item, id2) => (
-              <td key={`${id1}-${id2}`} className="border-1px">
-                {item}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
+      ))}
     </table>
   );
 
@@ -133,16 +130,66 @@ const Scenario = ({ scenario }) => {
     return null;
   };
 
+  const renderButtons = () => {
+    if (show) {
+      return (
+        <>
+          <Button
+            variant="contained"
+            onClick={() => setProgress(progressState.IN_PROGRESS)}
+          >
+            Start
+          </Button>
+          <span className="spacer-16" />
+          <Button
+            variant="contained"
+            onClick={() => setProgress(progressState.PASSING)}
+          >
+            Pass
+          </Button>
+          <span className="spacer-16" />
+          <Button
+            variant="contained"
+            onClick={() => setProgress(progressState.FAILING)}
+          >
+            Fail
+          </Button>
+        </>
+      );
+    }
+    return null;
+  };
+
+  let h2Class = '';
+  switch (progress) {
+    case progressState.IN_PROGRESS:
+      h2Class = 'progress';
+      break;
+    case progressState.PASSING:
+      h2Class = 'pass';
+      break;
+    case progressState.FAILING:
+      h2Class = 'fail';
+      break;
+    default:
+      break;
+  }
+
   return (
     <>
       <h2
         id="scenario-user-can-create-a-new-case"
         style={{ cursor: 'pointer' }}
         onClick={() => setShow(!show)}
+        className={`${h2Class} row`}
       >
-        <Caret show={show} />
+        <div className="center">
+          <Caret show={show} />
+        </div>
         Scenario: {scenario.name}
       </h2>
+
+      {renderButtons()}
       {renderSteps()}
     </>
   );
