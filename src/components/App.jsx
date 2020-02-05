@@ -186,6 +186,21 @@ export default () => {
             </tr>
           </table>
         </li>
+        <li>
+          <a href="https://docs.google.com/spreadsheets/d/1XYIXlb7WfY5PDis9agQiv-7jeCubulrQgzN5i035Xeg/edit?usp=sharing">
+            The following test user exists (in this link)
+          </a>
+          <table>
+            <tr>
+              <th>User</th>
+              <th>Type</th>
+            </tr>
+            <tr>
+              <td>Test UserA</td>
+              <td>Normal</td>
+            </tr>
+          </table>
+        </li>
       </ol>
       <hr />
       <h3>Steps</h3>
