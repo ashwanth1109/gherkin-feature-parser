@@ -61,7 +61,15 @@ export default function Scenarios({ data }) {
                   {scenario.steps.map((step, id) => (
                     <StyledTableRow key={id + 1}>
                       <StyledTableCell scope="row">{id + 1}</StyledTableCell>
-                      <StyledTableCell>{step.description}</StyledTableCell>
+                      <StyledTableCell>
+                        {step.description.includes('is logged in as') ? (
+                          <a href="https://docs.google.com/spreadsheets/d/1XYIXlb7WfY5PDis9agQiv-7jeCubulrQgzN5i035Xeg/edit#gid=0">
+                            {step.description}
+                          </a>
+                        ) : (
+                          step.description
+                        )}
+                      </StyledTableCell>
                       <StyledTableCell>{step.outcome}</StyledTableCell>
                     </StyledTableRow>
                   ))}
