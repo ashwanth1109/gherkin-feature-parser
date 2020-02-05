@@ -99,7 +99,7 @@ export default () => {
           <td>1</td>
           <td>
             <a href="https://docs.google.com/spreadsheets/d/1XYIXlb7WfY5PDis9agQiv-7jeCubulrQgzN5i035Xeg/edit#gid=0">
-              The user is logged in as Normal User
+              The user is logged in as Administrator
             </a>
           </td>
           <td>Action is executed</td>
