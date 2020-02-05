@@ -1,3 +1,7 @@
+* {
+  font-family: 'Quicksand', sans-serif;
+}
+
 table,
 th,
 td {
@@ -7,4 +11,11 @@ td {
 th,
 td {
   padding: 8px;
+}
+
+.max-w-50 {
+  max-width: 50px;
+}
+h2 {
+  color: dodgerblue;
 }
