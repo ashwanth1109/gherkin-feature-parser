@@ -133,7 +133,7 @@ const readDir = dir => {
         readFile(constructPath(dir, file));
       } else {
         // it is a directory
-        readDir(constructPath(dir, file));
+        // readDir(constructPath(dir, file));
       }
     });
     transformFeature(longFileString);
@@ -145,11 +145,73 @@ const readDir = dir => {
   });
 };
 
-const features = ['admin', 'case', 'category'];
+// TODO: Identify why 'project-group', 'status', 'user', 'wiki-template', 'workflow' is not running
+const features = [
+  'admin',
+  'case',
+  'category',
+  'configuration',
+  'custom-field',
+  'email',
+  'gui',
+  'holiday',
+  'notification',
+  'planner',
+  'priority',
+  'project',
+  'project-group',
+  'schedule',
+  'search',
+  'security',
+  'snippet',
+  'status',
+  'subscription',
+  'user',
+  'user-group',
+  'vacation',
+  'wiki',
+  'wiki-article',
+  'wiki-template',
+  'workflow'
+];
 
-for (const feature of features) {
-  const filePath = constructPath(featureFolder, feature);
-  outputPath = `${feature}.js`;
+const generateIndexString = (feature, featureParam, data) => {
+  data = { ...data, feature: featureParam };
+  return `import ${featureParam} from './${feature}';`;
+};
 
-  readDir(filePath);
-}
+const generateOnlyIndexFile = () => {
+  let indexString = '';
+  const data = {};
+  for (const feature of features) {
+    let featureParam = feature;
+    if (feature === 'case') {
+      featureParam = 'caseScenarios';
+    } else if (feature.match(/-/)) {
+      const partArr = feature.split('-');
+      featureParam =
+        partArr[0] + partArr[1][0].toUpperCase() + partArr[1].slice(1);
+    }
+    indexString = `${indexString} ${generateIndexString(
+      feature,
+      featureParam,
+      data
+    )}`;
+  }
+  fs.writeFileSync(`./src/data/index.js`, `${indexString}`);
+};
+// Generate data/feature files
+// const generateAllDataFiles = () => {
+//
+// };
+
+// Generate data/index file
+
+// Toggle the function calls as per your need
+// for (const feature of features) {
+//   const filePath = constructPath(featureFolder, feature);
+//   outputPath = `${feature}.js`;
+//
+//   readDir(filePath);
+// }
+// generateOnlyIndexFile();
