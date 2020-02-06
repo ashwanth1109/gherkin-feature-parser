@@ -63,6 +63,17 @@ const Scenario = ({ scenario }) => {
     </table>
   );
 
+  const renderLinkedStep = step => {
+    if (step.description.includes('is logged in as')) {
+      return (
+        <a target="_blank" href="#user-is-logged-in-as-admin">
+          {step.description}
+        </a>
+      );
+    }
+    return <>{step.description}</>;
+  };
+
   const renderTable = steps => {
     return (
       <table>
@@ -80,11 +91,7 @@ const Scenario = ({ scenario }) => {
             <StyledTableRow key={id + 1}>
               <StyledTableCell scope="row">{id + 1}</StyledTableCell>
               <StyledTableCell>
-                {step.description.includes('is logged in as') ? (
-                  <a href="#user-is-logged-in-as-admin">{step.description}</a>
-                ) : (
-                  step.description
-                )}
+                {renderLinkedStep(step)}
                 {step.table &&
                   step.description !== 'Check the outcome' &&
                   renderDescTable(step)}

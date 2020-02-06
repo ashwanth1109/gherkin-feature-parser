@@ -19,7 +19,6 @@ export default () => {
         <a href="https://drive.google.com/file/d/1GBUl32QavDSfHmjNfpc2syrMbQIM1eIQ/view?usp=sharing">
           How to use this app?
         </a>
-        <h2>Step Definitions</h2>
         <AdminLogin />
       </>
     );

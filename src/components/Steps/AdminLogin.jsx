@@ -1,45 +1,96 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import stepDefinitions from './stepDefinitions';
 
-const AdminLogin = () => (
-  <>
-    <h3 id="user-is-logged-in-as-admin">User is logged in as Administrator</h3>
+const AdminLogin = () => {
+  const renderDescTable = step => (
     <table>
       <tr>
-        <th>No.</th>
-        <th>Description</th>
-        <th>Expected Outcome</th>
+        {step.table.th.map((header, id) => (
+          <th className="border-1px" key={id}>
+            {header}
+          </th>
+        ))}
       </tr>
-      <tr>
-        <td>1</td>
-        <td>
-          <a href="https://docs.google.com/spreadsheets/d/1XYIXlb7WfY5PDis9agQiv-7jeCubulrQgzN5i035Xeg/edit#gid=0">
-            Go to link for credentials
-          </a>
-        </td>
-        <td>Action is executed</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Visit the environment URL given in the link above</td>
-        <td>Action is executed</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Enter administrator credentials as in link above</td>
-        <td>Action is executed</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Click the login button</td>
-        <td>Action is executed</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>Check the outcome</td>
-        <td>App is logged in succesfully</td>
-      </tr>
+      {step.table.td.map((data, id) => (
+        <tr key={id}>
+          {data.map((val, id2) => (
+            <td className="border-1px" key={`${id}-${id2}`}>
+              {val}
+            </td>
+          ))}
+        </tr>
+      ))}
     </table>
-  </>
-);
+  );
+
+  const renderTable = (arr, header) => (
+    <>
+      <h3>{header}</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Description</th>
+            <th>Expected Outcome</th>
+          </tr>
+        </thead>
+        <tbody>
+          {arr.map((cond, id) => (
+            <tr key={id}>
+              <td>{id + 1}</td>
+              <td>
+                {cond.description ? (
+                  <>
+                    {cond.link ? (
+                      <a href={cond.link}>{cond.description}</a>
+                    ) : (
+                      <div>{cond.description}</div>
+                    )}
+                  </>
+                ) : (
+                  <div>Check the outcome</div>
+                )}
+                {cond.table && <>{renderDescTable(cond)}</>}
+              </td>
+              <td>
+                {cond.outcome ? (
+                  <div>{cond.outcome}</div>
+                ) : (
+                  <div>Action is executed</div>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+
+  return (
+    <>
+      {stepDefinitions.map(stepDefinition => (
+        <Fragment key={stepDefinition.id}>
+          <h2 id={stepDefinition.id}>{stepDefinition.name}</h2>
+          {!!stepDefinition.preconditions.length && <h3>Preconditions</h3>}
+          {stepDefinition.preconditions.map((cond, id) => {
+            if (cond.link) {
+              return (
+                <a href={cond.link} key={id}>
+                  {id + 1}. {cond.description}
+                </a>
+              );
+            }
+            return (
+              <div key={id}>
+                {id + 1}. {cond.description}
+              </div>
+            );
+          })}
+          {renderTable(stepDefinition.steps, 'Steps')}
+        </Fragment>
+      ))}
+    </>
+  );
+};
 
 export default AdminLogin;
