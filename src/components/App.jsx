@@ -5,8 +5,6 @@ import AdminLogin from './steps/AdminLogin';
 import data from '../data/index';
 import Tabs from './Tabs';
 
-const scenarios = data.case;
-
 export default () => {
   const [tab, setTab] = useState(0);
 
