@@ -19,7 +19,6 @@ const replaceExampleInSteps = (scenario, id) => {
       scenario.steps.splice(id3, 1, newObj);
     });
   });
-  return scenario;
 };
 
 export default function Scenarios({ data }) {
@@ -32,11 +31,7 @@ export default function Scenarios({ data }) {
               <Fragment key={`${id}-${scenario.name}`}>
                 {scenario.examples.slice(1).map((example, id2) => {
                   const forkedScenario = JSON.parse(JSON.stringify(scenario));
-                  const modifiedScenario = replaceExampleInSteps(
-                    forkedScenario,
-                    id2
-                  );
-                  console.log(modifiedScenario);
+                  replaceExampleInSteps(forkedScenario, id2);
                   return (
                     <Scenario
                       key={`${id}-${id2}-${scenario.name}`}

@@ -27,7 +27,9 @@ const extractTable = (line, lineArr, lineId, tableArr) => {
     let checkLineId = lineId + 1;
     while (
       lineArr[checkLineId] &&
-      !lineArr[checkLineId].match(/(And|Given|When|Then)/)
+      !lineArr[checkLineId].match(
+        /(And|Given|When|Then|@PartiallyAutomated|@NotAutomated|Scenario)/
+      )
     ) {
       tableArr[tableArr.length - 1].addTableElement(lineArr[checkLineId]);
       checkLineId += 1;
@@ -187,29 +189,29 @@ const readDir = dir => {
 
 // TODO: Identify why 'project-group', 'status', 'user', 'wiki-template', 'workflow' is not running
 const features = [
-  'case'
-  // 'category',
-  // 'configuration',
-  // 'custom-field',
-  // 'email',
-  // 'gui',
-  // 'holiday',
-  // 'notification',
-  // 'planner',
-  // 'priority',
-  // 'project',
-  // 'project-group',
-  // 'schedule',
-  // 'search',
-  // 'security',
-  // 'snippet',
+  'case',
+  'category',
+  'configuration',
+  'custom-field',
+  'email',
+  'gui',
+  'holiday',
+  'notification',
+  'planner',
+  'priority',
+  'project',
+  // 'project-group'
+  'schedule',
+  'search',
+  // 'security'
+  'snippet',
   // 'status',
-  // 'subscription',
+  'subscription',
   // 'user',
-  // 'user-group',
-  // 'vacation',
-  // 'wiki',
-  // 'wiki-article',
+  'user-group',
+  'vacation',
+  'wiki',
+  'wiki-article'
   // 'wiki-template',
   // 'workflow'
 ];

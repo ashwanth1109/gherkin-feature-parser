@@ -44,12 +44,20 @@ const Scenario = ({ scenario }) => {
 
   const renderDescTable = step => (
     <table>
-      {step.table.th.map((header, id) => (
+      <tr>
+        {step.table.th.map((header, id) => (
+          <th className="border-1px" key={id}>
+            {header}
+          </th>
+        ))}
+      </tr>
+      {step.table.td.map((data, id) => (
         <tr key={id}>
-          <th className="border-1px">{header}</th>
-          {!!step.table.td.length && step.table.td[0][id] && (
-            <td className="border-1px">{step.table.td[0][id]}</td>
-          )}
+          {data.map((val, id2) => (
+            <td className="border-1px" key={`${id}-${id2}`}>
+              {val}
+            </td>
+          ))}
         </tr>
       ))}
     </table>
